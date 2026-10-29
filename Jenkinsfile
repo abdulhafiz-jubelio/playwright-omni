@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       // Samakan versinya dengan @playwright/test di package.json
-      image 'mcr.microsoft.com/playwright:v1.56.0-noble'
+      image 'mcr.microsoft.com/playwright:1.63.0-noble'
       args '--ipc=host'
     }
   }
