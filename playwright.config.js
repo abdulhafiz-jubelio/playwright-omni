@@ -12,6 +12,8 @@ module.exports = defineConfig({
   reporter: [
     ['list'],
     ['html', { open: 'never' }],
+    // Jenkins report
+    ['junit', { outputFile: 'test-results/junit.xml' }],
     // Allure: `npm run allure:serve` after a run (needs Java)
     ['allure-playwright', {
       resultsDir: 'allure-results',
