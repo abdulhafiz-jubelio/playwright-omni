@@ -18,6 +18,13 @@ pipeline {
         sh 'npm ci'
       }
     }
+    stage('Setup .env') {
+      steps {
+        withCredentials([file(credentialsId: 'playwright-env', variable: 'ENV_FILE')]) {
+          sh 'cp "$ENV_FILE" .env'
+        }
+      }
+    }
     stage('Test') {
       steps {
         sh 'npx playwright test'
@@ -36,7 +43,8 @@ pipeline {
         alwaysLinkToLastBuild: true,
         allowMissing: true
       ])
-      archiveArtifacts artifacts: 'test-results/**', allowEmptyArchive: true
+      archiveArtifacts artifacts: 'test-results/**', allowEmptyArchive: true,
+      sh 'rm -f .env'
     }
   }
 }
