@@ -43,7 +43,7 @@ pipeline {
         alwaysLinkToLastBuild: true,
         allowMissing: true
       ])
-      archiveArtifacts artifacts: 'test-results/**', allowEmptyArchive: true,
+      archiveArtifacts artifacts: 'test-results/**', allowEmptyArchive: true
       sh 'rm -f .env'
     }
   }
